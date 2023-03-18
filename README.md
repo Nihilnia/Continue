@@ -1,7 +1,6 @@
 # Continue
 
 ## Day_0
-Some of the projects of my portfolio include:
 
 - 1_JavaScript A Brief Introduction
   - 01 - JavaScript First contact
@@ -28,3 +27,4 @@ Some of the projects of my portfolio include:
   - 05 - Accessing objects
   - 06 - Accessing object properties
 
+## Day_1
