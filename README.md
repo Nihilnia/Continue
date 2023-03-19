@@ -28,3 +28,11 @@
   - 06 - Accessing object properties
 
 ## Day_1
+- 3_Objects
+  - 07 - Practice Build a new object
+  - 08 - Object methods
+  - 09 - Practice Build a new method
+  - 10 - Classes Object blueprints
+  - 11 - Object constructors
+  - 12 - Practice Build a new object with a constructor
+
