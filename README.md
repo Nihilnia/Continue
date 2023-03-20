@@ -35,4 +35,14 @@
   - 10 - Classes Object blueprints
   - 11 - Object constructors
   - 12 - Practice Build a new object with a constructor
+  
+## Day_2
+- 3_Objects
+  - 13 - Global objects
+  - 14 - Challenge Create a new object type
+  - 15 - Solution Create a new object type
+
+- 4_OSidebar String Output
+  - 01 - Mix text and variables with template literals
+  - 02 - Traditional string output
 
