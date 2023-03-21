@@ -45,4 +45,30 @@
 - 4_OSidebar String Output
   - 01 - Mix text and variables with template literals
   - 02 - Traditional string output
+  
+  
+  ## Day3
+- 5_DOM
+  - 01 - DOM The Document Object Model
+  - 02 - Access elements with querySelector methods
+  - 03 - Access elements using older methods
+  - 04 - Practice Find an element
+  - 05 - Modifying element classes
+  - 06 - Attributes
+  - 07 - Inline style
+  - 08 - Practice Modify classes and attributes, and styles
+  - 09 - Add DOM elements
+  - 10 - Challenge Add a new element
+  - 11 - Solution Add a new element
+
+- 6_Sidebar Variables and Data Types
+  - 01 - Variables Containers for everything
+  - 02 - Var
+  - 03 - Scope
+  - 04 - Let
+  - 05 - Const
+  - 06 - Data types 
+  - 07 - Assignment vs. comparison 
+  - 08 - Math operators 
+
 
