@@ -47,7 +47,7 @@
   - 02 - Traditional string output
   
   
-  ## Day3
+  ## Day_3
 - 5_DOM
   - 01 - DOM The Document Object Model
   - 02 - Access elements with querySelector methods
@@ -70,5 +70,13 @@
   - 06 - Data types 
   - 07 - Assignment vs. comparison 
   - 08 - Math operators 
+  
+  ## Day_4
+- 7_Arrays
+  - 01 - Arrays explained
+  - 02 - Arrays in code
+  - 03 - Array methods
+  - 04 - Challenge Build and modify an array
+  - 05 - Solution Build and modify an array
 
 
