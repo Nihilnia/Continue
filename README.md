@@ -97,5 +97,21 @@
   - 15 - Using the map() array method
   - 16 - Challenge Build an advanced function
   - 17 - Solution Build an advanced function
+  
 
 
+  
+	## Day_5
+- 9_Events
+  - 01 - DOM events explained
+  - 02 - Typical DOM events
+  - 03 - Event listeners
+  - 04 - Practice Experiment with event listeners
+  - 05 - Advanced event listeners and this
+  - 06 - Pass arguments through event listeners
+  - 07 - Challenge Create an event listener
+  - 08 - Solution Create an event listener
+	
+- 10_Troubleshooting and Validating JS
+  - 01 - Troubleshooting JavaScript in the browser
+  - 02 - Making sense of a React component
