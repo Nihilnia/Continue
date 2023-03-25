@@ -71,12 +71,47 @@
   - 07 - Assignment vs. comparison 
   - 08 - Math operators 
   
-  ## Day_4
+	## Day_4
 - 7_Arrays
   - 01 - Arrays explained
   - 02 - Arrays in code
   - 03 - Array methods
   - 04 - Challenge Build and modify an array
   - 05 - Solution Build and modify an array
+  
+- 8_Functions and Methods
+  - 01 - The real-world function
+  - 02 - Functions and methods
+  - 03 - A standard function
+  - 04 - The arrow function
+  - 05 - Arrow functions and this
+  - 06 - Practice Build a function
+  - 07 - Pass data to a function with parameters
+  - 08 - Return values from a function
+  - 09 - Practice Pass values between functions
+  - 10 - Callbacks
+  - 11 - Conditional if...else statement
+  - 12 - Logical operators
+  - 13 - Conditional switch statement
+  - 14 - Looping through content
+  - 15 - Using the map() array method
+  - 16 - Challenge Build an advanced function
+  - 17 - Solution Build an advanced function
+  
 
 
+  
+	## Day_5
+- 9_Events
+  - 01 - DOM events explained
+  - 02 - Typical DOM events
+  - 03 - Event listeners
+  - 04 - Practice Experiment with event listeners
+  - 05 - Advanced event listeners and this
+  - 06 - Pass arguments through event listeners
+  - 07 - Challenge Create an event listener
+  - 08 - Solution Create an event listener
+	
+- 10_Troubleshooting and Validating JS
+  - 01 - Troubleshooting JavaScript in the browser
+  - 02 - Making sense of a React component
