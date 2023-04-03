@@ -1,23 +1,24 @@
-//This example is silly but ok
-
-const delay = (seconds) => {
-    let pPromise = new Promise((resolve, reject) => {
-        if(typeof seconds !== 'number'){
-            setTimeout(() => {
-                reject(new Error('You must give number.'));
-            }, 2000);
-            
-        }
+const delay = (seconds) =>
+    new Promise((resolve, reject) => {
+        if(typeof seconds !== 'number') reject(new Error('You must give a number'));
 
         setTimeout(resolve, seconds * 1000);
-    })
+    }
+    
+    );
 
-    return pPromise;
+
+//Resolve em
+delay(2).then(() => console.log("the First"));
+delay(4).then(() => sayHello());
+delay(6).then(() => alert("the third"));
+
+
+
+sayHello = () => {
+    console.log("heya.");
 }
 
 
-delay(2).then(() => console.log('Fire coming out of the monkey\' s head'));
-
-
 //Reject
-delay("2").then(() => console.log('Fire coming out of the monkey\' s head'));
+delay("8").then(() => alert("the fourth"));

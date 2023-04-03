@@ -1,35 +1,27 @@
-//Function
-//Return promise
-    //api(link)
-    //request(XMLHTTPRequest)
+const getData = () => {
+    return new Promise((resolve, reject) => {
+        const apiLink = 'http://api.open-notify.org/astros.json';
+        const request = new XMLHttpRequest();
+        request.open('GET', apiLink);
 
-
-    //open
-    //onload
-
-
-
-const getData = (incominLink) => {
-    let pPromise = new Promise((resolve, reject) => {
-        let api = incominLink;
-        let request = new XMLHttpRequest();
-        request.open('GET', api);
-        request.onload(() => {
+        request.onload = () => {
             if(request.status === 200){
                 resolve(JSON.parse(request.response));
             }else{
                 reject(Error(request.statusText));
             }
-        });
+        };
+
+        request.onerror = (err) => reject(err);
         request.send();
-        return pPromise;
 
-        
+
     })
-}
+};
 
-
-getData('https://jsonplaceholder.typicode.com/todos/1').then();
-
+getData().then(
+    (incominData) => console.log(incominData),
+    (err) => console.error(new Error("Cannot load the incomin' data"))
+);
 
 
