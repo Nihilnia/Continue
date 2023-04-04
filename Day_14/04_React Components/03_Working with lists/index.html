@@ -25,66 +25,24 @@
   <body>
     <div id="main"></div>
 
-    <!-- <script src="script.js"></script> -->
     <script type="text/babel">
-      let divMain = document.querySelector("#main");
 
-      function WelcomEm(props) {
-        console.log(props);
-        return <h2>⚛️_匚ㄖ几ㄒ丨几ㄩ乇 {props.purpose}</h2>;
-      }
 
-      function LilInfo(props) {
-        return (
-          <p>
-            {props.beautiful}Quis autem vel eum iure reprehenderit qui in ea
-            voluptate velit esse quam nihil molestiae consequatur, vel illum qui
-            dolorem eum fugiat quo voluptas nulla pariatur? Published at{" "}
-            {props.publishDate}
-          </p>
-        );
-      }
+      let divMain = document.querySelector('#main');
 
-      function ElementButton() {
-        return <button id="btnClick">Click me!</button>;
-      }
+      let exList = ['a', 'b', 'c'];
 
-      const elementz = ["something_0", "something_1", "something_2"];
-
-      function FeelGood(props) {
+      function AddList(props){
         return (
           <ul>
-            {props.katey.map((f) => (
-              <li>{f}</li>
-            ))}
-          </ul>
-        );
+            {props.songz.map(f => (<li>{f}_{props.symbol}</li>))}
+            </ul>
+        )
       }
 
-      function Mutter(props) {
-        return (
-          <div>
-            <WelcomEm purpose="unknown" />
-            <LilInfo
-              beautiful="It is beautiful "
-              publishDate={new Date().getFullYear()}
-            />
-            <ElementButton />
-            <FeelGood katey={elementz} />
-          </div>
-        );
-      }
+      ReactDOM.render(<AddList symbol = 'x' songz = {exList}/>, divMain);
 
-      ReactDOM.render(<Mutter />, divMain);
-
-      let btnClick = document.querySelector("#btnClick");
-      let elementH2 = document.querySelector("h2");
-      function btnAlert() {
-        alert("Aye check your header.");
-        elementH2.innerText = "Aye check your header.";
-      }
-
-      btnClick.addEventListener("click", btnAlert);
+    </script>
     </script>
   </body>
 </html>

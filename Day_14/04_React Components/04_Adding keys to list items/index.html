@@ -25,23 +25,37 @@
   <body>
     <div id="main"></div>
 
-    <script src="script.js"></script>
-
-    <!-- <script type="text/babel">
-      let element_01 = "Element_01";
-      let element_02 = "Element_02";
-      let element_03 = "Element_03";
+    <script type="text/babel">
+      const exList = ["a", "b", "c"];
+      const exList0bj = exList.map((item, index) => ({
+        id: index,
+        title: item,
+      }));
 
       let divMain = document.querySelector("#main");
 
-      ReactDOM.render(
-        <ul>
-          <li>{element_01.toLowerCase()}</li>
-          <li>{element_02.toUpperCase()}</li>
-          <li>{element_03.toLowerCase()}</li>
-        </ul>,
-        divMain
-      );
-    </script> -->
+      function AddList(props) {
+        return (
+          <ul>
+            {props.itemz.map((item) => (
+              <li key={item.id}>
+                {item.id % 2 == 0 ? item.title.toUpperCase() : item.title}_XYZ
+              </li>
+            ))}
+          </ul>
+        );
+      }
+      // function AddList(props) {
+      //   return (
+      //     <ul>
+      //       {props.itemz.forEach((f) => {
+      //         <li key={f.key}>{f.title}_ABC</li>;
+      //       })}
+      //     </ul>
+      //   );
+      // }
+
+      ReactDOM.render(<AddList itemz={exList0bj} />, divMain);
+    </script>
   </body>
 </html>

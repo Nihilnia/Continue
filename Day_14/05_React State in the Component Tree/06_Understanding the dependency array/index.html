@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+      body {
+        background-color: #000000;
+        color: aliceblue;
+      }
+
+      /* img {
+        width: 25%;
+      } */
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+
+    <script type="text/babel">
+      const exList = ["a", "b", "c"];
+      const picList = [
+        "../img/pic_1.jpg",
+        "../img/pic_2.jpg",
+        "../img/pic_3.jpg",
+      ];
+      const exList0bj = exList.map((item, index) => ({
+        id: index,
+        title: item,
+        imageSource: picList[index],
+      }));
+
+      let divMain = document.querySelector("#main");
+
+      function AddList(props) {
+        return (
+          <ul>
+            {props.itemz.map((item) => (
+              <li key={item.id}>
+                {item.id % 2 == 0 ? item.title.toUpperCase() : item.title}_XYZ
+                <img src={item.imageSource} height={200} alt={item.title} />
+              </li>
+            ))}
+          </ul>
+        );
+      }
+
+      function AddParagraph() {
+        return <p>Somethings here</p>;
+      }
+
+      function Mutter() {
+        return (
+          <React.Fragment>
+            <AddList itemz={exList0bj} />
+            <AddParagraph />
+          </React.Fragment>
+        );
+      }
+
+      ReactDOM.render(<Mutter />, divMain);
+    </script>
+  </body>
+</html>
