@@ -1,35 +1,42 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect, useReducer } from "react";
 
-function App() {
-  const [something, setSomething] = useState("abc");
-  console.log(something);
+function App(props) {
+  // console.log(props.Glr);
+
+  const [txt, setTxt] = useState("");
+  const [hex, setHex] = useState("#000000");
+
+  function resetStates() {
+    setTxt("");
+    setHex("#000000");
+  }
+
+  function fCatch(e) {
+    e.preventDefault();
+
+    alert(`Text: ${txt}, hex: ${hex}`);
+    resetStates();
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <h2>{something}</h2>
-        <button
-          onClick={() => {
-            setSomething("Button_0");
-          }}
-        >
-          Button_0
-        </button>
-        <button
-          onClick={() => {
-            setSomething("Button_1");
-          }}
-        >
-          Button_1
-        </button>
-        <button
-          onClick={() => {
-            setSomething("Button_2");
-          }}
-        >
-          Button_2
-        </button>
+        <form onSubmit={fCatch}>
+          <input
+            type="text"
+            placeholder="Give a color.."
+            value={txt}
+            onChange={(event) => setTxt(event.target.value)}
+          />
+          <input
+            type="color"
+            value={hex}
+            onChange={(event) => setHex(event.target.value)}
+          />
+          <button>Add</button>
+        </form>
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -42,6 +49,13 @@ function App() {
         >
           Learn React
         </a>
+        <button
+          onClick={() => {
+            console.clear();
+          }}
+        >
+          console.clear()
+        </button>
       </header>
     </div>
   );
