@@ -1,42 +1,44 @@
 import logo from "./logo.svg";
 import "./App.css";
-import { useState, useEffect, useReducer } from "react";
+import { useState, useEffect } from "react";
 
 function App(props) {
-  // console.log(props.Glr);
+  console.log(props.userName);
 
-  const [txt, setTxt] = useState("");
-  const [hex, setHex] = useState("#000000");
+  const [data, setData] = useState(null);
+  useEffect(() => {
+    fetch(`https://api.github.com/users/${props.userName}`)
+      .then((response) => response.json())
+      .then(setData);
+  }, []);
 
-  function resetStates() {
-    setTxt("");
-    setHex("#000000");
-  }
-
-  function fCatch(e) {
-    e.preventDefault();
-
-    alert(`Text: ${txt}, hex: ${hex}`);
-    resetStates();
+  function checkUser() {
+    if (data) {
+      return (
+        <div id="gitHubUser">
+          <p>
+            Username: {data.login}
+            <br />
+            Blog: {data.blog}
+            <br />
+            Type: {data.type}
+            <br />
+            Folowers: {data.followers} Following: {data.following}
+            <br />
+            Account created: {data.created_at}
+            <br />
+            Updated: {data.updated_at}
+          </p>
+          <img src={data.avatar_url} alt={data.avatar_url} width={200} />
+        </div>
+      );
+    }
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <form onSubmit={fCatch}>
-          <input
-            type="text"
-            placeholder="Give a color.."
-            value={txt}
-            onChange={(event) => setTxt(event.target.value)}
-          />
-          <input
-            type="color"
-            value={hex}
-            onChange={(event) => setHex(event.target.value)}
-          />
-          <button>Add</button>
-        </form>
+        {checkUser()}
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
