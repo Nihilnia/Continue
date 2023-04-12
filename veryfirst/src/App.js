@@ -1,66 +1,82 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { useState, useEffect } from "react";
+import { useState, useReducer, useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 
-function App(props) {
-  console.log(props.userName);
-
-  const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${props.userName}`)
-      .then((response) => response.json())
-      .then(setData);
-  }, []);
-
-  function checkUser() {
-    if (data) {
-      return (
-        <div id="gitHubUser">
-          <p>
-            Username: {data.login}
-            <br />
-            Blog: {data.blog}
-            <br />
-            Type: {data.type}
-            <br />
-            Folowers: {data.followers} Following: {data.following}
-            <br />
-            Account created: {data.created_at}
-            <br />
-            Updated: {data.updated_at}
-          </p>
-          <img src={data.avatar_url} alt={data.avatar_url} width={200} />
-        </div>
-      );
-    }
-  }
-
+function NavBar() {
   return (
-    <div className="App">
-      <header className="App-header">
-        {checkUser()}
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button
-          onClick={() => {
-            console.clear();
-          }}
-        >
-          console.clear()
-        </button>
-      </header>
+    <nav>
+      <Link to="/">Homepage</Link> | <Link to="/About">About</Link> |
+      <Link to="/RandomPage">RandomPage</Link>
+    </nav>
+  );
+}
+
+export function History() {
+  return (
+    <div>
+      <h2>What a history.</h2>
     </div>
   );
 }
 
+export function About() {
+  return (
+    <div>
+      <NavBar />
+      <h2>It' s da About page</h2>
+      <Link to="/About/History">Click to see da history</Link>
+      <Outlet />
+    </div>
+  );
+}
+
+export function RandomPage({ minNumber, maxNumber }) {
+  const [cbValue, setCbValue] = useReducer((cbValue) => !cbValue, false);
+  const [pW, setPW] = useState("");
+
+  useEffect(() => {
+    console.log("Paw' s value changed to " + pW);
+  }, [pW]);
+
+  // console.log(pW);
+
+  function controlForm(e) {
+    e.preventDefault();
+    console.log(e);
+  }
+  return (
+    <>
+      <div>
+        <form onSubmit={controlForm}>
+          <input
+            type="password"
+            placeholder="Pass"
+            onChange={(e) => setPW(e.target.value)}
+          />
+          <input type="checkbox" onChange={setCbValue} />
+          <label>{cbValue === false ? "Not checked" : "Checked"}</label>
+          <button type="submit">asdasd</button>
+        </form>
+      </div>
+      <div>
+        <NavBar />
+        <h2>{Math.random(minNumber, maxNumber)}_a</h2>
+        <h2>It's random page.</h2>
+      </div>
+    </>
+  );
+}
+
+function App(props) {
+  return (
+    <div>
+      <nav>
+        {props.linkz.map((item) => (
+          <Link to={item.link}>{item.name} | </Link>
+        ))}
+        <h2>It' s the homepage.</h2>
+      </nav>
+    </div>
+  );
+}
 export default App;
