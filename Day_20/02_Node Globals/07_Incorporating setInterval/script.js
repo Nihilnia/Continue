@@ -4,29 +4,29 @@ const grab = (f) => {
 };
 
 let delay = grab("--delay");
-let key = 0;
+let start = 0;
 
-const timerFinished = () => {
-  clearInterval(interval);
-  console.log("Timer is done. Been: " + delay + "seconds");
+const timer = () => {
+  console.log("Done.");
+  clearInterval(f);
 };
 
-setTimeout(timerFinished, delay * 1000);
+setTimeout(timer, delay * 1000);
 
-const myInterval = () => {
-  key += 0.5;
-  console.log(`${key} seconds passed..`);
+const clockwork = () => {
+  start += 0.5;
+  process.stdout.write(`Been ${start} seconds..\n`);
 };
 
-const interval = setInterval(myInterval, 500);
+const f = setInterval(clockwork, 500);
 
-// or, shorter
+//or
 
 // let key = 0;
-// const xInterval = setInterval(() => {
+// const daInterval = setInterval(() => {
 //   key += 0.5;
-//   console.log(`${key} seconds passed..`);
-//   if (key === 5) {
-//     clearInterval(xInterval);
+//   process.stdout.write(`Been ${key} seconds..\n`);
+//   if (key >= 3) {
+//     clearInterval(daInterval);
 //   }
 // }, 500);
