@@ -8,7 +8,7 @@ const rl = readLine.createInterface({
   output: process.stdout,
 });
 
-function getTheAnswerz(questionz, done) {
+module.exports = (questionz, done) => {
   const answerz = [];
 
   const questionAnswered = (answer) => {
@@ -20,10 +20,4 @@ function getTheAnswerz(questionz, done) {
     }
   };
   rl.question(questionz[0], questionAnswered);
-}
-
-getTheAnswerz(daQuestionz, (f) => {
-  console.log("[X]");
-  console.log(f);
-  process.exit();
-});
+};
