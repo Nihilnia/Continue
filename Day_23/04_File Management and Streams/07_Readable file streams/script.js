@@ -1,29 +1,23 @@
-const path = require("path");
+const fs = require("fs");
 const util = require("util");
-const v8 = require("v8");
 
-console.log("Dir name: " + __dirname);
-console.log("File name: " + __filename);
+let stream = fs.createReadStream("./readme.md", "UTF-8");
 
-console.log("Dir name (base): " + path.basename(__dirname));
-console.log("File name (base): " + path.basename(__filename));
+let data;
 
-for (let f in global) console.log(f);
+stream.once("data", (chunk) => {
+  util.log("Data reading is started..");
+  console.log("- - - - -");
+  util.log(chunk);
+});
 
-//path.join
+stream.on("data", (chunk) => {
+  util.log(`Chunk length: ${chunk.length}`);
+  data += chunk;
+});
 
-const rootFolder = path.join(__dirname, "www", "root");
-console.log("ROOOOOOOT:" + rootFolder);
-console.log(path.basename(rootFolder));
+stream.on("end", () => {
+  util.log(`Reading is finished. Length: ${data.length}`);
+});
 
-//util
-util.log("Diiiiiiiiiiiir:" + __dirname);
-util.log(__filename);
-util.log(rootFolder);
-
-util.log(path.basename(__dirname));
-util.log(path.basename(__filename));
-util.log(path.basename(rootFolder));
-
-//v8
-util.log(v8.getHeapCodeStatistics());
+console.log("Welcome to the streams.");

@@ -1,29 +1,48 @@
-const path = require("path");
-const util = require("util");
-const v8 = require("v8");
+const fs = require("fs");
 
-console.log("Dir name: " + __dirname);
-console.log("File name: " + __filename);
+let answerStream;
 
-console.log("Dir name (base): " + path.basename(__dirname));
-console.log("File name (base): " + path.basename(__filename));
+let questionz = ["Name: ", "Age: ", "Profession: "];
+let answerz = [];
 
-for (let f in global) console.log(f);
+const askQuestionz = function (index) {
+  process.stdout.write(`\n\n${questionz[index]}`);
+  process.stdout.write(">>>");
+};
 
-//path.join
+process.stdin.once("data", (data) => {
+  let userInput = data.toString().trim();
 
-const rootFolder = path.join(__dirname, "www", "root");
-console.log("ROOOOOOOT:" + rootFolder);
-console.log(path.basename(rootFolder));
+  if (fs.existsSync(`./${userInput}.md`)) {
+    fs.unlinkSync(`./${userInput}.md`);
+  }
 
-//util
-util.log("Diiiiiiiiiiiir:" + __dirname);
-util.log(__filename);
-util.log(rootFolder);
+  answerStream = fs.createWriteStream(`./${userInput}.md`);
+  answerStream.write(
+    `Answer for question ${questionz[answerz.length]}: ${userInput}\n\n`
+  );
+});
 
-util.log(path.basename(__dirname));
-util.log(path.basename(__filename));
-util.log(path.basename(rootFolder));
+process.stdin.on("data", (data) => {
+  let answer = data.toString().trim();
+  answerStream.write(
+    `Answer for question ${questionz[answerz.length]}: ${answer}\n\n`,
+    () => {
+      if (answerz.length < questionz.length) {
+        askQuestionz(answerz.length);
+        console.log("ON, index: " + answerz.length);
+      } else {
+        process.exit();
+      }
+    }
+  );
+  answerz.push(answer);
+});
 
-//v8
-util.log(v8.getHeapCodeStatistics());
+process.on("exit", () => {
+  console.log(answerz);
+  answerStream.close();
+  process.exit();
+});
+
+askQuestionz(answerz.length); //0
