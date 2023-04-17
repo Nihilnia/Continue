@@ -7,3 +7,8 @@ fs.readdirSync("./").forEach((file) => {
     util.log(`DELETED FILE: ${file}`);
   }
 });
+
+fs.rename("./cheatsheet.md", "../../../cheatSheet.md", (err) => {
+  if (err) throw err;
+  util.log("File moved.");
+});
