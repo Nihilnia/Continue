@@ -1,5 +1,6 @@
 const util = require("util");
 const fs = require("fs");
+const v8 = require("v8");
 
 process.stdin.on("data", (icData) => {
   let userInput = icData.toString().trim();
@@ -18,7 +19,14 @@ process.stdin.on("data", (icData) => {
       break;
 
     default:
-      let format = `\n\n------\n\n${userInput}-----`;
+      let format = "";
+
+      if (userInput === "getheapcode") {
+        format = v8.getHeapCodeStatistics().toString();
+      } else {
+        format = `\n\n------\n\n${userInput}-----`;
+      }
+
       fs.appendFile(fileName, format, (err) => {
         if (err) throw err;
       });
@@ -26,3 +34,5 @@ process.stdin.on("data", (icData) => {
       break;
   }
 });
+
+util.log(v8.getHeapCodeStatistics());

@@ -1,29 +1,41 @@
-const path = require("path");
+const fs = require("fs");
 const util = require("util");
-const v8 = require("v8");
 
-console.log("Dir name: " + __dirname);
-console.log("File name: " + __filename);
+// //Moving
+// fs.renameSync("./move", "./examplefolder/move");
+// util.log("Folder moved.");
 
-console.log("Dir name (base): " + path.basename(__dirname));
-console.log("File name (base): " + path.basename(__filename));
+// //_async
+// fs.rename("./move", "./examplefolder/move", (err) => {
+//   if (err) throw err;
+//   util.log("Folder moved");
+// });
 
-for (let f in global) console.log(f);
+// //Renaming
 
-//path.join
+// fs.renameSync("./move", "./oldMove");
+// util.log("Folder moved.");
 
-const rootFolder = path.join(__dirname, "www", "root");
-console.log("ROOOOOOOT:" + rootFolder);
-console.log(path.basename(rootFolder));
+//_async
+// fs.rename("./move", "./oldMove", (err) => {
+//   if (err) throw err;
+//   util.log("Folder moved.");
+// });
 
-//util
-util.log("Diiiiiiiiiiiir:" + __dirname);
-util.log(__filename);
-util.log(rootFolder);
+//Removing
+// fs.rmdirSync("./oldMove");
+// util.log("Directory removed");
 
-util.log(path.basename(__dirname));
-util.log(path.basename(__filename));
-util.log(path.basename(rootFolder));
+// //_async
+// fs.rmdir("./accountz", (err) => {
+//   if (err) throw err;
+//   util.log("Directory removed");
+// });
 
-//v8
-util.log(v8.getHeapCodeStatistics());
+// fs.readdirSync("./oldMove").forEach((file) => {
+//   fs.unlinkSync(`./oldMove/${file}`);
+//   util.log(file + " deleted..");
+// });
+
+// fs.rmdirSync("./oldMove");
+// util.log("Directory removed.");

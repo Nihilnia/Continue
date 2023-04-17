@@ -1,29 +1,55 @@
-const path = require("path");
+const fs = require("fs");
 const util = require("util");
-const v8 = require("v8");
 
-console.log("Dir name: " + __dirname);
-console.log("File name: " + __filename);
+// fs.mkdir("./exampleFolder", () => {
+//   util.log("Directory created.");
+// });
 
-console.log("Dir name (base): " + path.basename(__dirname));
-console.log("File name (base): " + path.basename(__filename));
+// fs.writeFile(
+//   "./exampleFolder/exampleFile.md",
+//   "console.log('Hello world.')",
+//   () => {
+//     util.log("Wrote.");
+//   }
+// );
 
-for (let f in global) console.log(f);
+//To rename
+// fs.renameSync(
+//   "./exampleFolder/exampleFile.md",
+//   "./exampleFolder/oldExampleFile.js"
+// );
 
-//path.join
+// fs.existsSync("./exampleFolder/oldExampleFile.js", () => {
+//   util.log("file name changed.");
+// });
 
-const rootFolder = path.join(__dirname, "www", "root");
-console.log("ROOOOOOOT:" + rootFolder);
-console.log(path.basename(rootFolder));
+//To move
 
-//util
-util.log("Diiiiiiiiiiiir:" + __dirname);
-util.log(__filename);
-util.log(rootFolder);
+// fs.rename("./exampleFolder/oldExampleFile.js", "./oldExampleFile.js", (err) => {
+//   if (err) throw err;
+//   util.log("File succesfuly moved.");
+// });
 
-util.log(path.basename(__dirname));
-util.log(path.basename(__filename));
-util.log(path.basename(rootFolder));
+// //To remove
+// fs.unlinkSync("./oldExampleFile.js");
 
-//v8
-util.log(v8.getHeapCodeStatistics());
+// fs.renameSync(
+//   "./something/newAnotherSomethings.js",
+//   "./newAnotherSomethings.js"
+// );
+
+// fs.rename(
+//   "./newAnotherSomethings.js",
+//   "./something/newAnotherSomethings.js",
+//   (err) => {
+//     if (err) throw err;
+//     util.log("File name succesfuly changed");
+//   }
+// );
+
+// fs.unlinkSync("./something/deletdis.html");
+
+fs.unlink("./something/deletdis.html", (err) => {
+  if (err) throw err;
+  util.log("File deleted.");
+});
